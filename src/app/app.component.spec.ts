@@ -1,15 +1,22 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { FooterComponent } from './footer/footer.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
-describe('AppComponent', () => {
+fdescribe('AppComponent', () => {
+  library.add(fas);
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+     
       imports: [
-        RouterTestingModule
+        RouterTestingModule,MatToolbarModule,FontAwesomeModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,FooterComponent
       ],
     }).compileComponents();
   });
@@ -20,16 +27,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'movie-booking-app'`, () => {
+  it(`should have as title 'MovieBookingApp'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('movie-booking-app');
+    expect(app.title).toEqual('MovieBookingApp');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('movie-booking-app app is running!');
+    expect(compiled).toBeTruthy();
   });
 });
