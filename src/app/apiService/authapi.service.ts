@@ -3,13 +3,19 @@ import { Injectable } from '@angular/core';
 import { LoginData } from '../model/login-data';
 import { SignupData } from '../model/signup-data';
 import { ResetData } from '../model/reset-data';
+import { ResponseData } from '../model/response-data';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthapiService {
   //authorization-microservice url
-  authserviceUrl = 'http://localhost:8080/api/v1.0/auth';
+  // authserviceUrl = 'http://localhost:8080/api/v1.0/auth';
+  //aws url
+  // authserviceUrl = 'http://54.200.203.109:8080/api/v1.0/auth';
+  //aws api gateway url
+  authserviceUrl = 'https://ew94skoaoj.execute-api.us-west-2.amazonaws.com/2101931-arvind-authapi/authapi';
+
   constructor(private http: HttpClient) { }
 
   loginUser(loginData: LoginData) {
@@ -17,11 +23,15 @@ export class AuthapiService {
   }
 
   registerUser(signupData: SignupData) {
-    return this.http.post<SignupData>(this.authserviceUrl + "/signup", signupData);
+    return this.http.post<any>(this.authserviceUrl + "/signup", signupData);
   }
 
   resetPasswordUser(resetData:ResetData){
-    return this.http.patch<ResetData>(this.authserviceUrl+"/forgot",resetData);
+    return this.http.patch<any>(this.authserviceUrl+"/forgot",resetData);
+  }
+
+  getUsersList(){
+    return this.http.get<ResponseData[]>(this.authserviceUrl+"/getusers");
   }
 
   isUerLoggedIn(){

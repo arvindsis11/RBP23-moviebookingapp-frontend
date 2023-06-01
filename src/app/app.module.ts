@@ -34,6 +34,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { DeleteDialogComponent } from './view-movies/delete-dialog/delete-dialog.component';
 import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ViewUsersComponent } from './view-users/view-users.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NotfoundComponent,
     DeleteDialogComponent,
     FooterComponent,
+    ViewUsersComponent,
   ],
   imports: [
     BrowserModule,

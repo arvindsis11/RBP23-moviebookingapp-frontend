@@ -10,7 +10,7 @@
         <mat-card-title>Add Movie</mat-card-title>
         <div *ngIf="addMovieSuccess !== null"
           [ngClass]="{'error-message': !addMovieSuccess, 'success-message': addMovieSuccess}" class="message">
-          {{ addMovieSuccess ? 'added movie successfully!' : 'process failed cause:fixme.' }}
+          {{ addMovieSuccess ? 'added movie successfully!' : 'could not add movie.' }}
         </div>
       </mat-card-header>
       <mat-card-content>

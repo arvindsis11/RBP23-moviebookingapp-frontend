@@ -11,6 +11,7 @@ import { AddMovieComponent } from './add-movie/add-movie.component';
 import { BookMovieComponent } from './book-movie/book-movie.component';
 import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { ViewUsersComponent } from './view-users/view-users.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'addmovie', component: AddMovieComponent, canActivate: [AuthGuardService], data: { allowedRoles: ['ROLE_ADMIN'] } },
   { path: 'bookmovie', component: BookMovieComponent, canActivate: [AuthGuardService], data: { allowedRoles: ['ROLE_ADMIN', 'ROLE_CUSTOMER'] } },
   { path: 'movie/:id', component: MoviedetailsComponent, canActivate: [AuthGuardService], data: { allowedRoles: ['ROLE_ADMIN', 'ROLE_CUSTOMER'] } },
+  { path: 'userlist', component: ViewUsersComponent, canActivate: [AuthGuardService], data: { allowedRoles: ['ROLE_ADMIN'] } },
   { path: 'unauthorized', component: UnauthorizedComponent },
   { path: '**', component: NotfoundComponent },
 ];

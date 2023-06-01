@@ -1,0 +1,15 @@
+.spacer {
+    margin-left: 20px;
+  }
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  mat-card-header {
+    display: block;
+    padding: 50px;
+    text-align: center;
+    font-weight: bolder;
+    /* color: white;
+    background-color: #333545; */
+  }

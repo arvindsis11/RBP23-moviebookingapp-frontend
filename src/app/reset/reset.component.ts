@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { ResetData } from '../model/reset-data';
 import { AuthapiService } from '../apiService/authapi.service';
-import { ConfirmPasswordValidator} from './confirm-password.validator';
+import { ConfirmPasswordValidator } from './confirm-password.validator';
 
 @Component({
   selector: 'app-reset',
@@ -13,7 +13,7 @@ export class ResetComponent {
   forgotPasswordForm: FormGroup | any;
   hidePassword: boolean = true;
   resetSuccess: boolean | null = null;
-  loading:boolean = false;
+  loading: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthapiService) { }
 
@@ -26,7 +26,7 @@ export class ResetComponent {
       securityAnswer: ['', Validators.required]
     },
       {
-        validator: ConfirmPasswordValidator('password','confirmPassword')
+        validator: ConfirmPasswordValidator('password', 'confirmPassword')
       });
   }
 
@@ -52,9 +52,15 @@ export class ResetComponent {
     console.log(resetPasswordData);
     this.authService.resetPasswordUser(resetPasswordData).subscribe(res => {
       console.log(res);
-      this.resetSuccess = true;
+      if (res.msg === "Username doesn't exists!") {
+        this.resetSuccess = false;
+      }
+      else {
+        this.resetSuccess = true;
+      }
       this.loading = false;
     }, err => {
+      console.log('this is error')
       console.log(err.error);
       this.resetSuccess = false;
       this.loading = false;

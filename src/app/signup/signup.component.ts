@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SignupData } from '../model/signup-data';
 import { AuthapiService } from '../apiService/authapi.service';
+import { ResponseData } from '../model/response-data';
 
 @Component({
   selector: 'app-signup',
@@ -10,7 +11,6 @@ import { AuthapiService } from '../apiService/authapi.service';
 })
 export class SignupComponent {
   registerForm: FormGroup | any;
-
   hidePassword: boolean = true;
   registrationSuccess: boolean | null = null;
   loading: boolean = false;//page load-progress bar
@@ -44,8 +44,11 @@ export class SignupComponent {
     };
     this.authService.registerUser(signupData).subscribe(res=>{
       console.log(res);
-      this.registrationSuccess = true;
-      console.log('registeration successful');
+      if(res.msg==='User registered successfully'){
+        this.registrationSuccess = true;
+      }else{
+        this.registrationSuccess = false;
+      }
       this.loading = false;
     },err=>{
       this.registrationSuccess = false;

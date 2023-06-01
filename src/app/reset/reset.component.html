@@ -6,9 +6,8 @@
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
       <mat-card-title>Forgot Password</mat-card-title>
-      <div *ngIf="resetSuccess !== null" [ngClass]="{'error-message': !resetSuccess, 'success-message': resetSuccess}"
-        class="message">
-        {{ resetSuccess ? 'reset password successfully!' : 'Reset failed. wrong username or securityQuestion' }}
+      <div *ngIf="resetSuccess !== null" [ngClass]="{'error-message': !resetSuccess, 'success-message': resetSuccess}" class="message">
+        {{ resetSuccess ? 'Reset password successfully!' : 'Reset failed. Wrong username or security question.' }}
       </div>
     </mat-card-header>
     <mat-card-content>
