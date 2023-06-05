@@ -3,17 +3,13 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
 
 fdescribe('AppComponent', () => {
-  library.add(fas);
   beforeEach(async () => {
     await TestBed.configureTestingModule({
      
       imports: [
-        RouterTestingModule,MatToolbarModule,FontAwesomeModule
+        RouterTestingModule,MatToolbarModule
       ],
       declarations: [
         AppComponent,FooterComponent

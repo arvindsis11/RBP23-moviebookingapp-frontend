@@ -31,13 +31,14 @@ export class ViewTicketsComponent {
     'seatNumbers',
     'movieName',
     'theaterName',
+    'issuedAt',
     'userId'
   ];
   ngOnInit() {
     this.loadTicketsData();//here actually we are loading data
   }
   showSeats(movie: any) {
-    console.log(movie);
+    // console.log(movie);
     this.selectedMovie = movie;
   }
 
@@ -54,10 +55,11 @@ export class ViewTicketsComponent {
   //for admin only
   loadAllTickets() {
     this.movieService.getAllTickets(this.finalToken).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.tickets = data;
+      this.tickets.reverse();
       this.updateDataSource();
-      console.log(this.tickets);
+      // console.log(this.tickets);
       this.loading = false;
     }, err => {
       console.log(err);
@@ -66,10 +68,11 @@ export class ViewTicketsComponent {
   //if userrole is customer
   loadUsersTickets(userId: string) {
     this.movieService.getUserTickets(this.finalToken, userId).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.tickets = data;
+      this.tickets.reverse();//reversing to see latest transactions
       this.updateDataSource();
-      console.log(this.tickets);
+      // console.log(this.tickets);
       this.loading = false;
     }, err => {
       console.log(err);

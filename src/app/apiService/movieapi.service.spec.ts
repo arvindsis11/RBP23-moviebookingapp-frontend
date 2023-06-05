@@ -25,7 +25,7 @@ fdescribe('MovieapiService', () => {
 
   it('should send a GET request to retrieve all movies', () => {
     const token = 'test-token';
-    const testMovieData =[{movieId:'101',movieName:'endgame',theaterName:'pvr',totalTickets:2,ticketStatus:'book now',bookedSeats:['a1','a2'],tickets:[]}];
+    const testMovieData =[{movieId:'1',movieName:'endgame',theaterName:'pvr',totalTickets:2,ticketStatus:'book now',bookedSeats:['a1','a2'],tickets:[]}];
 
     service.getAllMovies(token).subscribe((movies) => {
       expect(movies).toEqual(testMovieData);
@@ -39,14 +39,14 @@ fdescribe('MovieapiService', () => {
 
   it('should send a GET request to retrieve a movie by ID', () => {
     const token = 'test-token';
-    const movieId = '123';
-    const mockMovie={movieId:'123',movieName:'endgame',theaterName:'pvr',totalTickets:2,ticketStatus:'book now',bookedSeats:['a1','a2'],tickets:[]};
+    const movieId = '1';
+    const mockMovie={movieId:'1',movieName:'endgame',theaterName:'pvr',totalTickets:2,ticketStatus:'book now',bookedSeats:['a1','a2'],tickets:[]};
 
     service.getMovieById(token, movieId).subscribe((movie) => {
       expect(movie).toEqual(mockMovie);
     });
 
-    const req = httpMock.expectOne(service.movieServiceUrl + `/movies/search/${movieId}`);
+    const req = httpMock.expectOne(service.movieServiceUrl + `/search/${movieId}`);
     expect(req.request.method).toBe('GET');
     expect(req.request.headers.get('Authorization')).toBe(token);
     req.flush(mockMovie);

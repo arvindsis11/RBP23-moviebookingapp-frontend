@@ -29,7 +29,7 @@ export class AuthapiService {
   resetPasswordUser(resetData:ResetData){
     return this.http.patch<any>(this.authserviceUrl+"/forgot",resetData);
   }
-
+  //testing purpose only--fix
   getUsersList(){
     return this.http.get<ResponseData[]>(this.authserviceUrl+"/getusers");
   }

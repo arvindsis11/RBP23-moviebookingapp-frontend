@@ -5,6 +5,8 @@ import { MovieapiService } from '../apiService/movieapi.service';
 import { TicketData } from '../model/ticket-data';
 import { AuthapiService } from '../apiService/authapi.service';
 import { MovieData } from '../model/movie-data';
+import { MatAlertComponent } from '../mat-alert/mat-alert.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-book-movie',
@@ -15,7 +17,7 @@ export class BookMovieComponent {
   rows: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
   seats: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
   seatNumbers: string[] = [];
-  bookedSeats: string[] = ['A1'];
+  bookedSeats: string[] = [];
   selectedMovie:MovieData|any;
   bookingSuccess:boolean|null = null;
   loading:boolean = false;
@@ -25,15 +27,17 @@ export class BookMovieComponent {
   movieId:string|any;
   bookingForm: FormGroup;
 
+  errormsg:string|any;
+
 
  
   finalToken = this.authService.getUserToken();
   username:string|any;
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router, private movieService: MovieapiService, private authService: AuthapiService) {
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router, private movieService: MovieapiService, private authService: AuthapiService,private dialog:MatDialog) {
     this.bookingForm = this.fb.group({
       movieName: ['', Validators.required],
       theaterName: ['', Validators.required],
-      numberOfTickets: [null, Validators.required],
+      numberOfTickets: [null,  [Validators.required, Validators.min(1)]],
     });
   }
 
@@ -54,15 +58,18 @@ export class BookMovieComponent {
     }
     this.loading = true;
     this.movieService.bookMovie(this.finalToken,this.movieName,bookingData).subscribe(res=>{
-      console.log(res);
+      console.log('check',res);
       this.bookingSuccess = true;
       this.loading = false;
-      window.location.reload();//fix me later
+      //window.location.reload();//fix me later
+      this.openAlert(`successfully booked movie: ${this.movieName}`, true);
       this.bookingForm.reset();
     },err=>{
       this.bookingSuccess = false;
       this.loading = false;
-      console.log(err);
+      this.errormsg = err.error;
+      console.log(this.errormsg);
+      this.openAlert(this.errormsg, false);
     });
     console.log(bookingData);
 
@@ -75,7 +82,7 @@ export class BookMovieComponent {
       this.theaterName = params['theaterName'];
       this.movieId = params['movieId'];
       console.log(params);
-      this.bookingForm.setValue({
+      this.bookingForm.setValue({//directly setting moviename and theaterName here
         movieName: this.movieName,
         theaterName: this.theaterName,
         numberOfTickets: this.bookingForm.controls['numberOfTickets'].value
@@ -90,7 +97,12 @@ export class BookMovieComponent {
       
     },err=>{
       console.log(err);
+      this.openAlert(err.error,false);
     })
+  }
+  areSeatsSelected(): boolean {
+    const numberOfTickets = this.bookingForm.controls['numberOfTickets'].value;
+    return this.seatNumbers.length === numberOfTickets;
   }
   
   isSeatSelected(row: string, seat: string): boolean {
@@ -124,6 +136,14 @@ export class BookMovieComponent {
       this.seatNumbers.push(seatNumber);
     }
   }
+  }
+  //check if ticket book is failed or success
+  openAlert(message:string ,processSuccess: boolean): void {
+    this.dialog.open(MatAlertComponent, {
+      width: '400px',
+      height:'300px',
+      data: { message,processSuccess },
+    });
   }
 
 }

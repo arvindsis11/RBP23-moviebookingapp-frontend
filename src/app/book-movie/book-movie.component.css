@@ -2,6 +2,9 @@
   display: flex;
   justify-content: center;
 }
+/* mat-card{
+  background: linear-gradient(to bottom, #f0ebeb, #c7dff0);
+} */
 
 .button-container {
   display: flex;
@@ -17,6 +20,10 @@ mat-card-header {
   padding: 50px;
   text-align: center;
   /* background-color: #333545; */
+}
+.card-center{
+  display: block;
+  text-align: center;
 }
 mat-card-title{
   display: block;

@@ -33,8 +33,9 @@ import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { DeleteDialogComponent } from './view-movies/delete-dialog/delete-dialog.component';
 import { FooterComponent } from './footer/footer.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ViewUsersComponent } from './view-users/view-users.component';
+import { CustomDatePipe } from './apiService/custom-date.pipe';
+import { MatAlertComponent } from './mat-alert/mat-alert.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,8 @@ import { ViewUsersComponent } from './view-users/view-users.component';
     DeleteDialogComponent,
     FooterComponent,
     ViewUsersComponent,
+    CustomDatePipe,
+    MatAlertComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +78,6 @@ import { ViewUsersComponent } from './view-users/view-users.component';
     MatDialogModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
-    FontAwesomeModule,
 
   ],
   providers: [],

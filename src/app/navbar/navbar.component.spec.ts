@@ -4,6 +4,7 @@ import { NavbarComponent } from './navbar.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AuthapiService } from '../apiService/authapi.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 fdescribe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -11,7 +12,7 @@ fdescribe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports:[HttpClientTestingModule,MatToolbarModule],
+      imports:[HttpClientTestingModule,MatToolbarModule,MatIconModule],
       providers: [AuthapiService],
       declarations: [ NavbarComponent ]
     })

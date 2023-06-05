@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MovieData } from '../model/movie-data';
 import { AuthapiService } from '../apiService/authapi.service';
 import { MovieapiService } from '../apiService/movieapi.service';
 import { AddmovieData } from '../model/addmovie-data';
+import { MatDialog } from '@angular/material/dialog';
+import { MatAlertComponent } from '../mat-alert/mat-alert.component';
+
 
 @Component({
   selector: 'app-add-movie',
@@ -13,9 +15,9 @@ import { AddmovieData } from '../model/addmovie-data';
 export class AddMovieComponent {
   movieForm: FormGroup | any;
   addMovieSuccess: boolean | null = null;
-  loading:boolean = false;
+  loading: boolean = false;
   finalToken = this.authService.getUserToken();
-  constructor(private formBuilder: FormBuilder,private authService:AuthapiService,private movieService:MovieapiService) {}
+  constructor(private formBuilder: FormBuilder, private authService: AuthapiService, private movieService: MovieapiService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.movieForm = this.formBuilder.group({
@@ -33,22 +35,34 @@ export class AddMovieComponent {
     }
     this.loading = true;
     const formData = this.movieForm.value;
-    console.log(formData);
+    // console.log(formData);
     const movieData: AddmovieData = {
       movieName: formData.movieName,
       theaterName: formData.theaterName,
       totalTickets: formData.totalTickets,
       ticketStatus: formData.ticketStatus,
     };
-    this.movieService.addMovie(movieData,this.finalToken).subscribe(res=>{
-   console.log(res);
-   this.addMovieSuccess = true;
-   this.loading = false;
-    },err=>{
+    this.movieService.addMovie(movieData, this.finalToken).subscribe(res => {
+      console.log(res);
+      this.addMovieSuccess = true;
+      this.loading = false;
+      this.openAlert(`movie ${res.movieName} added successfully`, true);//fix
+      this.movieForm.reset();   // uncomment me
+    }, err => {
       console.log(err);
       this.addMovieSuccess = false;
+      this.loading = false;
+      this.openAlert(`failed: ${err.error.text}`, false);
     });
-    this.movieForm.reset();
   }
+  //alert box for success or fail
+  openAlert(message:string ,processSuccess: boolean): void {
+    this.dialog.open(MatAlertComponent, {
+      width: '300px',
+      height:'300px',
+      data: { message,processSuccess },
+    });
+  }
+
 
 }

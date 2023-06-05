@@ -37,13 +37,14 @@ export class MoviedetailsComponent implements OnInit {
     'seatNumbers',
     'movieName',
     'theaterName',
+    'issuedAt',
     'userId'
   ];
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.movieId = params['id'];
-      console.log(this.movieId);
+      // console.log(this.movieId);
       this.loadTicketsData();
     })
   }
@@ -65,12 +66,13 @@ export class MoviedetailsComponent implements OnInit {
   //for admin only
   loadAllTickets() {
     this.movieService.getMovieById(this.finalToken, this.movieId).subscribe(data => {
-      console.log('searchmovieData: ', data);
+      // console.log('searchmovieData: ', data);
       this.selectedMovie = data;
       this.tickets = data.tickets;
+      this.tickets.reverse();//fix
       this.bookedSeats = [...data.bookedSeats];//insert into booked
       this.updateDataSource();
-      console.log(this.tickets);
+      // console.log(this.tickets);
       this.loading = false;
     }, err => {
       console.log(err);
@@ -79,13 +81,14 @@ export class MoviedetailsComponent implements OnInit {
   //if userrole is customer
   loadUsersTickets(userId: string) {
     this.movieService.getMovieById(this.finalToken, this.movieId).subscribe(data => {
-      console.log('searchmovieData: ', data);
+      // console.log('searchmovieData: ', data);
       this.selectedMovie = data;
       this.tickets = data.tickets.filter(ticket => ticket.userId === userId);
       // this.tickets = data.tickets;
+      this.tickets.reverse();
       this.bookedSeats = [...data.bookedSeats];//insert into booked
       this.updateDataSource();
-      console.log(this.tickets);
+      // console.log(this.tickets);
       this.loading = false;
     }, err => {
       console.log(err);

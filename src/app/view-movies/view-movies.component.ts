@@ -47,14 +47,7 @@ export class ViewMoviesComponent {
   // Admin actions
   deleteMovie(movie: MovieData) {
     console.log('Delete movie:', movie);
-    this.openDialog(movie);//fix
-    // this.movieService.deleteMovie(movie.movieId, this.finalToken).subscribe(res => {
-    //   console.log(res);
-    //   this.loadMovieData();
-    // }, err => {
-    //   this.loadMovieData();
-    //   console.log(err);
-    // });
+    this.openDialog(movie);
   }
   editMovie(movie: MovieData): void {
     console.log('Editing movie');
@@ -66,7 +59,7 @@ export class ViewMoviesComponent {
     console.log('Confirming edit');
     console.log(movie);
     this.movieService.updateMovie(movie.movieName, movie, this.finalToken).subscribe((data) => {
-      console.log(data);
+      // console.log(data);
       this.loadMovieData();
     }, (err) => {
       console.log(err);
@@ -92,8 +85,9 @@ export class ViewMoviesComponent {
   loadMovieData() {
     this.username = localStorage.getItem('username');
     this.movieService.getAllMovies(this.finalToken).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.movies = data;
+      this.movies.reverse();
       this.updateDataSource();
       this.loading = false
     })
@@ -124,13 +118,13 @@ export class ViewMoviesComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.movieService.deleteMovie(movie.movieId, this.finalToken).subscribe(res => {
-          console.log(res);
+          // console.log(res);
           this.loadMovieData();
         }, err => {
           this.loadMovieData();
           console.log(err);
         });
-        console.log(result);
+        // console.log(result);
       }
     });
   }

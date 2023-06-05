@@ -1,39 +1,3 @@
-.seats {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .seat-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .row-label {
-    margin-right: 10px;
-  }
-  
-  .seat {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    background-color: lightgray;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  
-  .booked {
-    background-color: red;
-    cursor: not-allowed;
-  }
-  
   .red {
     color: red;
   }

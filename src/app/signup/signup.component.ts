@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SignupData } from '../model/signup-data';
 import { AuthapiService } from '../apiService/authapi.service';
 import { ResponseData } from '../model/response-data';
+import { MatAlertComponent } from '../mat-alert/mat-alert.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-signup',
@@ -15,21 +17,21 @@ export class SignupComponent {
   registrationSuccess: boolean | null = null;
   loading: boolean = false;//page load-progress bar
 
-  constructor(private formBuilder: FormBuilder,private authService:AuthapiService) {}
+  constructor(private formBuilder: FormBuilder, private authService: AuthapiService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      username: ['', [Validators.required, Validators.pattern(/^\S.*\S$/)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.pattern(/^\S*$/)]],
       securityQuestion: ['', Validators.required],
-      securityAnswer: ['', Validators.required],
+      securityAnswer: ['', [Validators.required, Validators.pattern(/^\S.*\S$/)]],
     });
   }
 
   onSubmit() {
     if (this.registerForm.invalid) {
-      this.loading  = false;
+      this.loading = false;
       return;
     }
     this.loading = true;
@@ -42,31 +44,27 @@ export class SignupComponent {
       securityQuestion: formData.securityQuestion,
       securityAnswer: formData.securityAnswer,
     };
-    this.authService.registerUser(signupData).subscribe(res=>{
+    this.authService.registerUser(signupData).subscribe(res => {
       console.log(res);
-      if(res.msg==='User registered successfully'){
+      if (res.msg === 'User registered successfully') {
         this.registrationSuccess = true;
-      }else{
+        this.openAlert('User registered successfully!', true);
+      } else {
         this.registrationSuccess = false;
+        this.openAlert(res.msg, false);
       }
       this.loading = false;
-    },err=>{
+    }, err => {
       this.registrationSuccess = false;
       console.log(err.error);
       this.loading = false;
     })
-    //fixme--remove after testing done
-    // this.registerForm.reset();
   }
-
-  togglePasswordVisibility() {
-    this.hidePassword = !this.hidePassword;
+  openAlert(message: string, processSuccess: boolean): void {
+    this.dialog.open(MatAlertComponent, {
+      width: '300px',
+      height: '300px',
+      data: { message, processSuccess },
+    });
   }
-
-  get passwordFieldType(): string {
-    return this.hidePassword ? 'password' : 'text';
-  }
-  // checkLogin():boolean{
-  //   return this.loading;
-  // }
 }

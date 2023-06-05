@@ -36,7 +36,7 @@ export class ViewUsersComponent implements OnInit{
 
   loadUsersList(){
     this.authService.getUsersList().subscribe(data=>{
-      console.log(data);
+      // console.log(data);
       this.users = data;
       this.updateDataSource();
       this.loading = false;

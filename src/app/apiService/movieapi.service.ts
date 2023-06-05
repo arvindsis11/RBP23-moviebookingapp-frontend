@@ -56,7 +56,7 @@ export class MovieapiService {
   }
 
   //admin only : delete movie by it's id
-  deleteMovie(movieId:string,token:string){
+  deleteMovie(movieId:number,token:string){
     let options = {
       headers:{"Authorization":token}
     }
@@ -84,7 +84,7 @@ export class MovieapiService {
       headers:{"Authorization":token}
     }
 
-    return this.http.post<AddmovieData>(this.movieServiceUrl+"/addmovie",movie,options);
+    return this.http.post<any>(this.movieServiceUrl+"/addmovie",movie,options);
   }
 
   
