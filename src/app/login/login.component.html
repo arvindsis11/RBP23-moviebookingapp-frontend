@@ -1,6 +1,9 @@
 <div class="login-container">
-  <mat-card>
+  <mat-card class="custom-card">
     <mat-card-header>
+       <div>
+        <span style="color: rgb(107, 160, 160); font-weight: bold;">movie</span>|book
+      </div>
       <div class="card-header" *ngIf="loading">
         <h5 style="color: green;"><b>please wait...</b></h5>
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>

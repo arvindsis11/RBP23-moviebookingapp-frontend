@@ -5,13 +5,13 @@
     justify-content: center;
     height: 91vh;
     text-align: center;
-    /* background-image: url('../assets/home.jpg'); */
-    background: linear-gradient(to bottom, #dad5d5, #bddef5);
+    background-image: url('../../assets/home.jpg');
+    /* background: linear-gradient(to bottom, #dad5d5, #bddef5); */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
     background-size: cover;
     background-position: center;
-    /* color: white; */
+    color: white;
   }
   
   .button-container {
