@@ -3,8 +3,9 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url('../../assets/slider.jpeg');
+  background-image: url('../../assets/marvel2.png');
   background-size: cover;
+  background-color: rgb(203, 221, 228);
   background-position: center;
   background-repeat: no-repeat;
   /* background: linear-gradient(to bottom, #dad5d5, #bddef5); */

@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="movie-container ">
+<div class="movie-container">
     <mat-card class="custom-card">
       <mat-card-header>
         <div class="card-header" *ngIf="loading">
@@ -34,7 +34,7 @@
           <div class="form-row">
             <mat-form-field appearance="fill">
                 <mat-label>Total tickets</mat-label>
-                <input matInput formControlName="totalTickets" placeholder="Enter total tickets for movie" required />
+                <input matInput formControlName="totalTickets" type="number" placeholder="Enter total tickets for movie" required />
                 <mat-error *ngIf="movieForm.get('totalTickets').hasError('required')">
                   *totalTickets is required
                 </mat-error>

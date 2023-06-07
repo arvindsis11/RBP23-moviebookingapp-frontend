@@ -7,8 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-
-  constructor(private route:Router){}
+loaded:boolean= false;
+ constructor(private route:Router){}
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.loaded = true;
+    }, 2000);
+  }
 
   loginHandle(){
     this.route.navigate(['/login']);

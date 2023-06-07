@@ -35,11 +35,13 @@ export class AddMovieComponent {
     }
     this.loading = true;
     const formData = this.movieForm.value;
-    // console.log(formData);
+    console.log(formData);
+    const status = this.movieForm.value.ticketStatus;
+    console.log(status);
     const movieData: AddmovieData = {
       movieName: formData.movieName,
       theaterName: formData.theaterName,
-      totalTickets: formData.totalTickets,
+      totalTickets: status === 'SOLD OUT' ? 0 : formData.totalTickets,
       ticketStatus: formData.ticketStatus,
     };
     this.movieService.addMovie(movieData, this.finalToken).subscribe(res => {

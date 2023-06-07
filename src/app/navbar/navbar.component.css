@@ -1,10 +1,15 @@
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: white;
     margin-right: 1rem;
+    color: black;
     cursor: pointer;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+ 
+
+  .navbar-container{
+    background-color:  #7a868b;
   }
   
   

@@ -1,12 +1,18 @@
 <app-navbar></app-navbar>
-<div class="movie-container ">
+<div class="movie-card">
+  <img src="assets/slider2.png" alt="slider" width="100%" style="cursor: pointer;">
+  <div class="text-overlay">
+      <h2>{{ selectedMovie.movieName|uppercase }} - {{ selectedMovie.theaterName|uppercase }}</h2>
+      <p>available tickets - {{ selectedMovie.totalTickets }}</p>
+    </div>
+  </div>
+<div class="movie-container">
 <mat-card *ngIf="selectedMovie">
   <div class="card-header" *ngIf="loading">
     <h5 style="color: green;"><b>please wait ticket booking in process...</b></h5>
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </div>
-  <mat-card-header class="card-header">{{ selectedMovie.movieName|uppercase }} - {{ selectedMovie.theaterName|uppercase }}</mat-card-header>
-  <p class="card-center">available tickets - {{ selectedMovie.totalTickets }}</p>
+  <mat-card-header class="card-header">Book Now</mat-card-header>
   <mat-card-title>--------------------------------</mat-card-title>
   <mat-card-content>
     <div class="seats">
@@ -19,7 +25,7 @@
       </div>
   </div>
   </mat-card-content>
-  <mat-error *ngIf="!areSeatsSelected()" style="text-align: center;">*please select the seatNumbers</mat-error>
+  <mat-error *ngIf="!areSeatsSelected()" style="text-align: center;">*please select the seatNumbers& numberOfTickets</mat-error>
 </mat-card>
 <mat-card>
     <mat-card-header>
@@ -56,7 +62,7 @@
         </mat-error>
       </mat-form-field>
       <div class="button-container">
-        <button mat-raised-button color="primary" type="submit" [disabled]="bookingForm.invalid || !areSeatsSelected()">Book Now</button>
+        <button mat-raised-button color="accent" type="submit" [disabled]="bookingForm.invalid || !areSeatsSelected()">Book Now</button>
       </div>
     </form>
   </div>

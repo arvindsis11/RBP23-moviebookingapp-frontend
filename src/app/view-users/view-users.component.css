@@ -1,10 +1,7 @@
 .spacer {
     margin-left: 20px;
   }
-  .mat-mdc-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
+  
   mat-card-header {
     display: block;
     padding: 50px;
@@ -12,4 +9,18 @@
     font-weight: bolder;
     /* color: white;
     background-color: #333545; */
+  }
+  .movie-card{
+    background-color: rgb(203, 221, 228);
+    position: relative; 
+  }
+
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 50%;
+  }
+  .search-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }

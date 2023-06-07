@@ -1,6 +1,28 @@
 .booking-container {
   display: flex;
   justify-content: center;
+  background-color: rgb(203, 221, 228);
+}
+.movie-card{
+  background-color: rgb(203, 221, 228);
+  position: relative; 
+}
+mat-card{
+  background-color: rgb(203, 221, 228);
+}
+
+
+.text-overlay {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.text-overlay h2 {
+  font-size: 24px;
+  padding: 10px;
 }
 /* mat-card{
   background: linear-gradient(to bottom, #f0ebeb, #c7dff0);
@@ -32,36 +54,53 @@ mat-card-title{
 }
 
 .seats {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .seat-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .row-label {
-    margin-right: 10px;
-  }
-  
-  .seat {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    background-color: lightgray;
-    /* border-radius: 20px; */
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.seat-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.row-label {
+  margin-right: 10px;
+}
+
+.seat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background-color: rgb(233, 225, 225);
+  border-radius: 5px;
+  cursor: pointer;
+  border: 2px solid green;
+  color: black;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.seat.green {
+  background-color: green;
+  color: white;
+}
+
+.seat.red {
+  border-color: red;
+  pointer-events: none;
+}
+
+.seat:hover {
+  background-color: green;
+  color: white;
+}
+
   
   .red {
     background-color: red;

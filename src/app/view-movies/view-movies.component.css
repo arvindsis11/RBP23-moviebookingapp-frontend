@@ -12,8 +12,24 @@
     background: linear-gradient(to bottom, #dad5d5, #bddef5);
   } */
   .movie-card{
-    background: linear-gradient(to bottom, #a5a1a1, #67885d);
+    background-color: rgb(203, 221, 228);
+    position: relative; 
   }
+ 
+  
+  .text-overlay {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .text-overlay h2 {
+    font-size: 24px;
+    padding: 10px;
+  }
+  
   .edit-input {
     width: 50px;
     margin-right: 10px;
