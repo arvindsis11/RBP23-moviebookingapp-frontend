@@ -1,3 +1,6 @@
+.movies-container{
+    background-color:rgb(107, 103, 103) ;
+}
 .card-header{
     font-size: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -59,5 +62,10 @@
   }
   .mat-mdc-form-field {
     font-size: 14px;
-    width: 100%;
+    width: 50%;
+  }
+  .search-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }

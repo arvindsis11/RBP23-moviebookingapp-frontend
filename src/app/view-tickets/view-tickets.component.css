@@ -67,7 +67,12 @@
 
   .mat-mdc-form-field {
     font-size: 14px;
-    width: 100%;
+    width: 50%;
+  }
+  .search-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   mat-card-header {
     display: block;

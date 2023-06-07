@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<mat-card *ngIf="selectedMovie">
+<mat-card *ngIf="selectedMovie" class="movies-container">
     <mat-card-header class="card-header">{{ selectedMovie.movieName|uppercase }} - {{ selectedMovie.theaterName|uppercase }}</mat-card-header>
     <mat-card-title>--------------------------------</mat-card-title>
     <mat-card-content>
@@ -14,14 +14,16 @@
     </div>
     </mat-card-content>
   </mat-card>
-  <mat-card>
+  <mat-card class="movies-container">
     <mat-card-content>
         <mat-card-header class="card-header">Booked Tickets</mat-card-header>
+        <div class="search-center">
         <mat-form-field>
             <mat-label>Search Transactions</mat-label>
             <input matInput (keyup)="applyFilter($event)" placeholder="Enter your search text here" #input>
             <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
+    </div>
         <div class="card-header" *ngIf="loading">
             <h5><b>loading transaction data in process...</b></h5>
             <mat-progress-bar mode="indeterminate"></mat-progress-bar>

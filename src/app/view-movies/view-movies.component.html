@@ -1,12 +1,14 @@
 <app-navbar></app-navbar>
-<img src="https://images.moviesanywhere.com/6cd4ca683babf3fbda2ef88ea1d10e42/a6493e24-eced-46a7-a738-d09f54eb35b7.jpg?r=3x1&w=2400" alt="Image description" width="100%" height="80%">
-<mat-card>
+<img src="assets/slider.jpeg" alt="slider" width="100%">
+<mat-card class="movie-card">
     <mat-card-content>
-        <mat-form-field>
+        <div class="search-center">
+        <mat-form-field class="rounded-search">
             <mat-label>search movies</mat-label>
             <input matInput (keyup)="applyFilter($event)" placeholder="Enter your search text here" #input>
             <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
+        </div>
         <div class="card-header" *ngIf="loading">
             <h5><b>loading movie data in process...</b></h5>
             <mat-progress-bar mode="indeterminate"></mat-progress-bar>

@@ -3,13 +3,18 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(to bottom, #dad5d5, #bddef5);
+  background-image: url('../../assets/slider.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background: linear-gradient(to bottom, #dad5d5, #bddef5); */
 }
 mat-card {
   max-width: 500px;
   width: 100%;
   height: auto;
   padding: 20px;
+  background: linear-gradient(to bottom, #dad5d5, #bddef5);
 }
 mat-card-header {
   display: block;

@@ -2,11 +2,13 @@
 <mat-card>
     <mat-card-content>
         <mat-card-header class="card-header">Transaction details</mat-card-header>
+        <div class="search-center">
         <mat-form-field>
             <mat-label>Search Transactions</mat-label>
             <input matInput (keyup)="applyFilter($event)" placeholder="Enter your search text here" #input>
             <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
+        </div>
         <div class="card-header" *ngIf="loading">
             <h5><b>loading transaction data in process...</b></h5>
             <mat-progress-bar mode="indeterminate"></mat-progress-bar>
