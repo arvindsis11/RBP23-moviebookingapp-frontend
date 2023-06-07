@@ -140,7 +140,7 @@ export class BookMovieComponent {
   //check if ticket book is failed or success
   openAlert(message:string ,processSuccess: boolean): void {
     this.dialog.open(MatAlertComponent, {
-      width: '400px',
+      width: '300px',
       height:'300px',
       data: { message,processSuccess },
     });

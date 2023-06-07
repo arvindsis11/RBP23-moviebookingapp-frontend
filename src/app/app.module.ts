@@ -36,6 +36,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ViewUsersComponent } from './view-users/view-users.component';
 import { CustomDatePipe } from './apiService/custom-date.pipe';
 import { MatAlertComponent } from './mat-alert/mat-alert.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { MatAlertComponent } from './mat-alert/mat-alert.component';
     FooterComponent,
     ViewUsersComponent,
     CustomDatePipe,
-    MatAlertComponent
+    MatAlertComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

@@ -20,7 +20,7 @@ export class NavbarComponent {
 
   logout(){
     this.authapiService.logoutUser();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home']);
   }
 
 

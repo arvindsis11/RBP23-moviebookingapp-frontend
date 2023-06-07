@@ -12,9 +12,11 @@ import { BookMovieComponent } from './book-movie/book-movie.component';
 import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ViewUsersComponent } from './view-users/view-users.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: SignupComponent },
   { path: 'reset', component: ResetComponent },
