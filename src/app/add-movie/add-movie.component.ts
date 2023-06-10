@@ -41,7 +41,7 @@ export class AddMovieComponent {
     const movieData: AddmovieData = {
       movieName: formData.movieName,
       theaterName: formData.theaterName,
-      totalTickets: status === 'SOLD OUT' ? 0 : formData.totalTickets,
+      totalTickets:formData.totalTickets,
       ticketStatus: formData.ticketStatus,
     };
     this.movieService.addMovie(movieData, this.finalToken).subscribe(res => {
@@ -54,7 +54,7 @@ export class AddMovieComponent {
       console.log(err);
       this.addMovieSuccess = false;
       this.loading = false;
-      this.openAlert(`failed: ${err.error.text}`, false);
+      this.openAlert(`failed: ${err.error}`, false);
     });
   }
   //alert box for success or fail

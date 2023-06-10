@@ -31,12 +31,12 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
 import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { DeleteDialogComponent } from './view-movies/delete-dialog/delete-dialog.component';
 import { FooterComponent } from './footer/footer.component';
 import { ViewUsersComponent } from './view-users/view-users.component';
 import { CustomDatePipe } from './apiService/custom-date.pipe';
 import { MatAlertComponent } from './mat-alert/mat-alert.component';
 import { HomeComponent } from './home/home.component';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [

@@ -25,6 +25,7 @@ export class BookMovieComponent {
   movieName:string|any;
   theaterName:string|any;
   movieId:string|any;
+  totalTickets:number|any;
   bookingForm: FormGroup;
 
   errormsg:string|any;
@@ -61,7 +62,8 @@ export class BookMovieComponent {
       console.log('check',res);
       this.bookingSuccess = true;
       this.loading = false;
-      //window.location.reload();//fix me later
+      // window.location.reload();
+      this.searchMovieById();
       this.openAlert(`successfully booked movie: ${this.movieName}`, true);
       this.bookingForm.reset();
     },err=>{
@@ -78,28 +80,31 @@ export class BookMovieComponent {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-       this.movieName = params['movieName'];
+      this.movieName = params['movieName']?.toString();
       this.theaterName = params['theaterName'];
       this.movieId = params['movieId'];
-      console.log(params);
-      this.bookingForm.setValue({//directly setting moviename and theaterName here
+      this.bookingForm.setValue({
         movieName: this.movieName,
         theaterName: this.theaterName,
         numberOfTickets: this.bookingForm.controls['numberOfTickets'].value
       });
+      this.searchMovieById();
     });
-    //it will search for movie by id and show booked seats in box
-    this.movieService.getMovieById(this.finalToken,this.movieId).subscribe(data=>{
-      console.log('movie searching....byid');
-      console.log(data);
-      this.selectedMovie = data;
-      this.bookedSeats = [...data.bookedSeats];//insert into booked
-      
-    },err=>{
-      console.log(err);
-      this.openAlert(err.error,false);
-    })
   }
+
+  searchMovieById(){
+    this.movieService.getMovieById(this.finalToken, this.movieId).subscribe(data => {
+      
+      this.selectedMovie = data;
+      this.totalTickets = data.totalTickets;
+
+      this.bookedSeats = [...data.bookedSeats]; // insert into booked
+    }, err => {
+      console.log('getMovieById error:', err);
+      this.openAlert(err.error, false);
+    });
+  }
+  
   areSeatsSelected(): boolean {
     const numberOfTickets = this.bookingForm.controls['numberOfTickets'].value;
     return this.seatNumbers.length === numberOfTickets;

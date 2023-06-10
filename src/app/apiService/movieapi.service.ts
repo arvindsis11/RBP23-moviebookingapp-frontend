@@ -10,10 +10,10 @@ import { AddmovieData } from '../model/addmovie-data';
 export class MovieapiService {
 
   //moviebookingapp-microservice url--local env
-  //movieServiceUrl = 'http://localhost:8081/api/v1.0/moviebooking';
+  movieServiceUrl = 'http://localhost:8081/api/v1.0/moviebooking';
   //ec2 url: http://54.200.203.109:8081/api/v1.0/moviebooking
   //api gateway url
-  movieServiceUrl = 'https://wlrawoxid8.execute-api.us-west-2.amazonaws.com/movie-booking-app/movieapi';
+  // movieServiceUrl = 'https://wlrawoxid8.execute-api.us-west-2.amazonaws.com/movie-booking-app/movieapi';
 
   constructor(private http:HttpClient) { }
   //get all movies(admin+customer)
@@ -29,7 +29,7 @@ export class MovieapiService {
     let options = {
       headers:{"Authorization":token}
     }
-    return this.http.get<MovieData>(this.movieServiceUrl+`/search/${movieId}`,options);//fix url here--match api gateway
+    return this.http.get<MovieData>(this.movieServiceUrl+`/movies/search/${movieId}`,options);//fix url here--match api gateway
   }
 
   //book a movie--fix me

@@ -24,3 +24,13 @@
     justify-content: center;
     align-items: center;
   }
+  .ok-icon{
+    cursor: pointer;
+    font-weight: bolder;
+    color: green;
+  }
+  .cancel-icon {
+    cursor: pointer;
+    font-weight: bolder;
+    color: red;
+  }

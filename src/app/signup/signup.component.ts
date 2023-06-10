@@ -46,17 +46,15 @@ export class SignupComponent {
     };
     this.authService.registerUser(signupData).subscribe(res => {
       console.log(res);
-      if (res.msg === 'User registered successfully') {
-        this.registrationSuccess = true;
-        this.openAlert('User registered successfully!', true);
-      } else {
-        this.registrationSuccess = false;
-        this.openAlert(res.msg, false);
-      }
+      this.registrationSuccess = true;
+      this.openAlert(res.msg, true);
+
       this.loading = false;
     }, err => {
       this.registrationSuccess = false;
+      console.log('error in api')
       console.log(err.error);
+      this.openAlert(err.error.msg, false);
       this.loading = false;
     })
   }

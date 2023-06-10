@@ -5,13 +5,18 @@
   </div>
     <span class="spacer"></span>
     <button mat-button routerLink="/movies">Home</button>
+    <span class="spacer2"></span>
     <button mat-button *ngIf="isAdmin" routerLink="/addmovie">Add Movie</button>
+    <span class="spacer2"></span>
     <button mat-button routerLink="/viewtickets">view-transactions</button>
+    <span class="spacer2"></span>
     <button mat-button *ngIf="isAdmin" routerLink="/userlist">user-list</button>
+    <span class="spacer2"></span>
     <span class="username-icon">
       <mat-icon>person</mat-icon>
       <span style="font-size: 15px;margin-top: 8px;" matTooltip="logged in user">{{ username }}</span>
     </span>
+    <span class="spacer2"></span>
     <button mat-button (click)="logout()">Logout</button>
   </mat-toolbar-row>
 </mat-toolbar>

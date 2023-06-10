@@ -6,7 +6,7 @@ import { MovieData } from '../model/movie-data';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { AuthapiService } from '../apiService/authapi.service';
-import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -15,7 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./view-movies.component.css']
 })
 export class ViewMoviesComponent {
-  movies!: MovieData[];
+  movies: MovieData[]|any;
   username: string | any;
   dataSource = new MatTableDataSource<MovieData>([]);
   editMode = true;//for editing just a property
@@ -40,7 +40,7 @@ export class ViewMoviesComponent {
   selectedMovie: any;
 
   bookNow(movie: MovieData) {
-    console.log('hello')
+    console.log('inside view sending data--book--',movie);
     //send this data to booking componen..t
     this.router.navigate(['/bookmovie'], { queryParams: { movieName: movie.movieName, movieId: movie.movieId, theaterName: movie.theaterName } });
   }
@@ -112,7 +112,7 @@ export class ViewMoviesComponent {
   openDialog(movie: MovieData): void {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '300px',
-      data: { movieName: movie.movieName }
+      data: { res: movie.movieName }
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -55,8 +55,8 @@ export class LoginComponent {
         this.router.navigate(['/movies']);
       },
       (err) => {
-        console.log(err.error.text);
-        this.errorMsg = err.error.text;
+        console.log(err);
+        this.errorMsg = err.error;
         this.loginSuccess = false;
         this.loading = false;
         this.openAlert(this.errorMsg, false);

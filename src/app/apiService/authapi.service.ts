@@ -10,11 +10,11 @@ import { ResponseData } from '../model/response-data';
 })
 export class AuthapiService {
   //authorization-microservice url
-  // authserviceUrl = 'http://localhost:8080/api/v1.0/auth';
+  authserviceUrl = 'http://localhost:8080/api/v1.0/auth';
   //aws url
   // authserviceUrl = 'http://54.200.203.109:8080/api/v1.0/auth';
   //aws api gateway url
-  authserviceUrl = 'https://ew94skoaoj.execute-api.us-west-2.amazonaws.com/2101931-arvind-authapi/authapi';
+  // authserviceUrl = 'https://ew94skoaoj.execute-api.us-west-2.amazonaws.com/2101931-arvind-authapi/authapi';
 
   constructor(private http: HttpClient) { }
 
@@ -30,8 +30,20 @@ export class AuthapiService {
     return this.http.patch<any>(this.authserviceUrl+"/forgot",resetData);
   }
   //testing purpose only--fix
-  getUsersList(){
-    return this.http.get<ResponseData[]>(this.authserviceUrl+"/getusers");
+  getUsersList(token:string){
+    let options = {
+      headers:{"Authorization":token}
+    }
+
+    return this.http.get<any>(this.authserviceUrl+"/getAllUsers",options);
+  }
+
+  deleteUserData(userId:number,token:string){
+    let options = {
+      headers:{"Authorization":token}
+    }
+
+    return this.http.delete<any>(this.authserviceUrl+`/deleteUser?userId=${userId}`,options);
   }
 
   isUerLoggedIn(){

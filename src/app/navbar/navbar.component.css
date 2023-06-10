@@ -16,6 +16,10 @@
   .spacer {
     flex: 1 1 auto;
   }
+  .spacer2 {
+    display: inline-block;
+    width: 50px;
+  }
   .username-icon {
     display: flex;
     align-items: center;
