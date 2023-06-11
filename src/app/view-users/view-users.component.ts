@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ResetData } from '../model/reset-data';
 
 @Component({
   selector: 'app-view-users',
@@ -96,12 +97,17 @@ export class ViewUsersComponent implements OnInit {
   confirmEdit(user: ResponseData): void {
     console.log('Confirming edit');
     console.log(user);
-    // this.userService.updateuser(user.username, user, this.finalToken).subscribe((data) => {
-    //   // console.log(data);
-    //   this.loaduserData();
-    // }, (err) => {
-    //   console.log(err);
-    // })
+    const resetData: ResetData = {
+      username: user.username,
+      newPassword: user.password,
+      secQuestion: user.securityQuestion,
+      secAnswer: user.securityAnswer,
+    };
+   this.authService.resetPasswordUser(resetData).subscribe(res=>{
+    console.log(res);
+   },err=>{
+    console.log(err);
+   });
     this.editMode = false;
     this.selecteduser = '';
   }
