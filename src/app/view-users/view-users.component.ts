@@ -77,7 +77,7 @@ export class ViewUsersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.authService.deleteUserData(userdata.id,this.finalToken).subscribe(res=>{
-          console.log(res);
+          // console.log(res);
           this.selecteduser = res;
           this.loadUsersList();
         },err=>{
