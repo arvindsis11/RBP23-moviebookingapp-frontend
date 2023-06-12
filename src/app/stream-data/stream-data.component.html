@@ -1,0 +1,13 @@
+<div class="container">
+<app-navbar></app-navbar>
+<div class="refresh-section">
+    <button mat-raised-button color="primary"  (click)="loadStreamData()">Refresh</button>
+  </div>
+<div class="message-list">
+    <h2 class="header">Kafka Streaming Data</h2>
+    <div class="message-item" *ngFor="let message of messages">
+        <p>id: {{ message.id }} - {{ message.content }}-{{message.timestamp}}</p>
+    </div>
+</div>
+</div>
+<!-- experimental -->

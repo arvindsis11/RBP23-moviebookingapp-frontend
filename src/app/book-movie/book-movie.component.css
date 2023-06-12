@@ -93,6 +93,7 @@ mat-card-title{
 
 .seat.red {
   border-color: red;
+  color: white;
   pointer-events: none;
 }
 

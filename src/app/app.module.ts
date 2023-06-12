@@ -37,6 +37,7 @@ import { CustomDatePipe } from './apiService/custom-date.pipe';
 import { MatAlertComponent } from './mat-alert/mat-alert.component';
 import { HomeComponent } from './home/home.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { StreamDataComponent } from './stream-data/stream-data.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
     CustomDatePipe,
     MatAlertComponent,
     HomeComponent,
+    StreamDataComponent,
   ],
   imports: [
     BrowserModule,

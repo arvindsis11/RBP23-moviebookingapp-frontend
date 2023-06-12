@@ -12,6 +12,8 @@
     <span class="spacer2"></span>
     <button mat-button *ngIf="isAdmin" routerLink="/userlist">user-list</button>
     <span class="spacer2"></span>
+    <button mat-button *ngIf="isAdmin" routerLink="/stream">*</button>
+    <span class="spacer2"></span>
     <span class="username-icon">
       <mat-icon>person</mat-icon>
       <span style="font-size: 15px;margin-top: 8px;" matTooltip="logged in user">{{ username }}</span>

@@ -46,6 +46,11 @@ export class AuthapiService {
     return this.http.delete<any>(this.authserviceUrl+`/deleteUser?userId=${userId}`,options);
   }
 
+  //experiment feature--comment me***
+  fetchMessages() {
+    return this.http.get<any[]>('http://localhost:8085/api/kafka/messages');
+  }
+
   isUerLoggedIn(){
     return localStorage.getItem('accessToken')!==null;
   }

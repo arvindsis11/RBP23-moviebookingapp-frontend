@@ -13,6 +13,7 @@ import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ViewUsersComponent } from './view-users/view-users.component';
 import { HomeComponent } from './home/home.component';
+import { StreamDataComponent } from './stream-data/stream-data.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'movie/:id', component: MoviedetailsComponent, canActivate: [AuthGuardService], data: { allowedRoles: ['ROLE_ADMIN', 'ROLE_CUSTOMER'] } },
   { path: 'userlist', component: ViewUsersComponent, canActivate: [AuthGuardService], data: { allowedRoles: ['ROLE_ADMIN'] } },
   { path: 'unauthorized', component: UnauthorizedComponent },
+  { path: 'stream', component: StreamDataComponent ,canActivate: [AuthGuardService], data: { allowedRoles: ['ROLE_ADMIN'] }},
   { path: '**', component: NotfoundComponent },
 ];
 
