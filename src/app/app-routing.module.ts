@@ -6,7 +6,6 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ResetComponent } from './reset/reset.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
-import { AuthGuardService } from './apiService/auth-guard.service';
 import { AddMovieComponent } from './add-movie/add-movie.component';
 import { BookMovieComponent } from './book-movie/book-movie.component';
 import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
@@ -14,6 +13,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { ViewUsersComponent } from './view-users/view-users.component';
 import { HomeComponent } from './home/home.component';
 import { StreamDataComponent } from './stream-data/stream-data.component';
+import { AuthGuardService } from './apiService/auth-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

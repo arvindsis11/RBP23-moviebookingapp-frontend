@@ -1,0 +1,40 @@
+<div class="container">
+  <mat-card class="transaction-card">
+    <mat-card-header class="header">
+      <mat-card-title class="title">Transaction Report</mat-card-title>
+      <mat-card-subtitle class="subtitle">Transaction ID: {{ transactionData.transactionId }}</mat-card-subtitle>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <div class="details-row">
+        <mat-icon class="icon">event_seat</mat-icon>
+        <span class="label">Seat Number:</span>
+        <span>{{ transactionData.seatNumbers }}</span>
+      </div>
+  
+      <div class="details-row">
+        <mat-icon class="icon">movie</mat-icon>
+        <span class="label">Movie Name:</span>
+        <span>{{ transactionData.movieName }}</span>
+      </div>
+  
+      <div class="details-row">
+        <mat-icon class="icon">theaters</mat-icon>
+        <span class="label">Theater Name:</span>
+        <span>{{ transactionData.theaterName }}</span>
+      </div>
+  
+      <div class="details-row">
+        <mat-icon class="icon">attach_money</mat-icon>
+        <span class="label">Total Price:</span>
+        <span>{{ transactionData.numberOfTickets*100 | currency }}</span>
+      </div>
+      
+      <div class="details-row">
+        <mat-icon class="icon">person</mat-icon>
+        <span class="label">User Id:</span>
+        <span>{{ transactionData.userId }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
