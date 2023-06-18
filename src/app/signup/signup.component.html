@@ -11,7 +11,7 @@
       <mat-card-title>Register</mat-card-title>
       <div *ngIf="registrationSuccess !== null"
         [ngClass]="{'error-message': !registrationSuccess, 'success-message': registrationSuccess}" class="message">
-        {{ registrationSuccess ? 'User registered successfully!' : 'Registration failed.username or email alreadyexists.' }}
+        {{ registrationSuccess ? 'User registered successfully!' : errorMsg }}
       </div>
     </mat-card-header>
     <mat-card-content>

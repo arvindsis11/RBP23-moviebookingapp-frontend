@@ -8,26 +8,36 @@ import { AuthapiService } from '../apiService/authapi.service';
 })
 export class StreamDataComponent {
   messages: any[]|any;
+  loading:boolean = false;
 
   constructor(private authapi: AuthapiService) { }
 
   ngOnInit() {
+    this.loading = true;
     this.loadStreamData();
-    // Refresh the data every few seconds
-    // setInterval(() => {
-    //   this.loadStreamData();
-    // }, 5000);
   }
    loadStreamData(){
+    this.loading = true;
     this.authapi.fetchMessages().subscribe(data=>{
       this.messages = data;
       console.log(data);
+      this.loading = false;
+    },err=>{
+      console.log(err);
+      this.loading = false;
     })
    }
 
    deleteMessages(){
+    this.loading = true;
     this.authapi.deleteKafkaData().subscribe(data=>{
       console.log(data);
+      this.loading = false;
+      this.loadStreamData();
+    },err=>{
+      this.loading = true;
+      console.log(err);
+      this.loadStreamData();
     })
    }
 }

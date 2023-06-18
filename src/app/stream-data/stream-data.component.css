@@ -1,8 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    margin:5px;
+    min-height: 81.5vh;
   }
 .message-list {
     background-color: #333;
@@ -10,7 +9,9 @@
     font-family: 'Courier New', monospace;
     padding: 10px;
     font-size: 16px;
+    margin: 5px;
   }
+  
 
   .refresh-section {
     margin:30px;
@@ -26,4 +27,8 @@
   .message-item {
     margin-bottom: 10px;
   }
+  .spacer{
+    margin:550px;
+  }
+  
   

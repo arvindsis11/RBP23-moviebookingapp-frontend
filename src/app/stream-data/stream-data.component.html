@@ -1,15 +1,18 @@
+<app-navbar></app-navbar>
 <div class="container">
-    <app-navbar></app-navbar>
     <div class="refresh-section">
         <button mat-raised-button color="primary" (click)="loadStreamData()">Refresh</button>
-        <button mat-raised-button color="warning" (click)="deleteMessages()">Delete All</button>
+        <span class="spacer"></span>
+        <button mat-raised-button class="right-buttons" color="warn" (click)="deleteMessages()">Delete All</button>
     </div>
-    <h5><b>loading streaming data...</b></h5>
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <div class="card-header" *ngIf="loading">
+        <h5><b>load stream data in process...</b></h5>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
     <div class="message-list">
         <h2 class="header">Kafka Streaming Data</h2>
         <div class="message-item" *ngFor="let message of messages">
-            <p>id: {{ message.id }} - {{ message.content }}-{{message.timestamp}}</p>
+            <p>id: {{ message.id }} - [{{ message.content }}] - [{{message.timestamp}}]</p>
         </div>
     </div>
 </div>

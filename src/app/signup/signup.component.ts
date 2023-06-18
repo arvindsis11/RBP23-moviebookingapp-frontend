@@ -16,6 +16,7 @@ export class SignupComponent {
   hidePassword: boolean = true;
   registrationSuccess: boolean | null = null;
   loading: boolean = false;//page load-progress bar
+  errorMsg: string | any;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthapiService, private dialog: MatDialog) { }
 
@@ -51,16 +52,17 @@ export class SignupComponent {
 
       this.loading = false;
     }, err => {
-      // if (err.status == 0) { fix
-      //   this.errorMsg = 'net::ERR_CONNECTION_REFUSED';
-      //   this.registrationSuccess = false;
-      //   this.loading = false;
-      // } 
-      this.registrationSuccess = false;
-      console.log('error in api')
-      console.log(err.error);
-      this.openAlert(err.error.msg, false);
-      this.loading = false;
+      if (err.status == 0) { 
+        this.errorMsg = 'net::ERR_CONNECTION_REFUSED';
+        this.registrationSuccess = false;
+        this.loading = false;
+      }  else {
+        this.errorMsg = err.error.msg;
+        console.log(this.errorMsg);
+        this.registrationSuccess = false;
+        this.loading = false;
+      }
+      this.openAlert(this.errorMsg, false);
     })
   }
   openAlert(message: string, processSuccess: boolean): void {

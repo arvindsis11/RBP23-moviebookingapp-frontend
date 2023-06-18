@@ -50,27 +50,23 @@ export class ResetComponent {
 
     // console.log(resetPasswordData);
     this.authService.resetPasswordUser(resetPasswordData).subscribe(res => {
-      if (res.msg === "could not update password(cause:sec ques not match)!") {
-        this.errorMsg = "could not update password(cause:sec ques not match)!";
-        this.resetSuccess = false;
-        this.openAlert(this.errorMsg, false);
-      }
-      else if(res.msg === "Username doesn't exists!"){
-        this.errorMsg = "Username doesn't exists!";
-        this.resetSuccess = false;
-        this.openAlert(this.errorMsg,false);
-      }else{
-        this.resetSuccess = true;
-        this.forgotPasswordForm.reset(); 
-        this.openAlert('password reset success!',true);
-      }
+      console.log(res);
+      this.resetSuccess = true;
+      this.openAlert(res.msg, true);
+
       this.loading = false;
     }, err => {
-      console.log('this is error')
-      console.log(err.error);
-      this.resetSuccess = false;
-      this.openAlert(this.errorMsg,false);
-      this.loading = false;
+      if (err.status == 0) { 
+        this.errorMsg = 'net::ERR_CONNECTION_REFUSED';
+        this.resetSuccess = false;
+        this.loading = false;
+      }  else {
+        this.errorMsg = err.error.msg;
+        console.log(this.errorMsg);
+        this.resetSuccess = false;
+        this.loading = false;
+      }
+      this.openAlert(this.errorMsg, false);
     })
   }
   openAlert(message:string ,processSuccess: boolean): void {
