@@ -1,5 +1,5 @@
 <div class="alert">
-    <!-- <mat-icon aria-hidden="false" (click)="closeAlert()"> close </mat-icon> -->
+    <mat-icon aria-hidden="false" (click)="closeAlert()"> close </mat-icon>
     <div *ngIf="processSuccess; else failIcon" class="center-content">
         <mat-icon color="primary" class="large-icon success-icon">check_circle</mat-icon>
         <p style="color: green;">{{ message }}</p>

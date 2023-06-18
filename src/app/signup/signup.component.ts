@@ -51,6 +51,11 @@ export class SignupComponent {
 
       this.loading = false;
     }, err => {
+      // if (err.status == 0) { fix
+      //   this.errorMsg = 'net::ERR_CONNECTION_REFUSED';
+      //   this.registrationSuccess = false;
+      //   this.loading = false;
+      // } 
       this.registrationSuccess = false;
       console.log('error in api')
       console.log(err.error);

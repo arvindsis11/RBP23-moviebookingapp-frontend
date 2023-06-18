@@ -21,7 +21,7 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private authService: AuthapiService,
     private router: Router,
-    private dialog:MatDialog
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -49,26 +49,32 @@ export class LoginComponent {
         console.log(res.roles[0].name);
         localStorage.setItem('role', res.roles[0].name);
         console.log(JSON.stringify(res.roles[0].name));
-        // localStorage.setItem('role',re)
         this.loginSuccess = true;
         this.loading = false;
         this.router.navigate(['/movies']);
       },
       (err) => {
-        console.log(err);
-        this.errorMsg = err.error;
-        this.loginSuccess = false;
-        this.loading = false;
+        console.log("000000000000000000000000000000000000")
+        console.log(err.message);
+        if (err.status == 0) {
+          this.errorMsg = 'net::ERR_CONNECTION_REFUSED';
+          this.loginSuccess = false;
+          this.loading = false;
+        } else {
+          this.errorMsg = err.error;
+          this.loginSuccess = false;
+          this.loading = false;
+        }
         this.openAlert(this.errorMsg, false);
       }
     );
   }
   //login success or failed
-  openAlert(message:string ,processSuccess: boolean): void {
+  openAlert(message: string, processSuccess: boolean): void {
     this.dialog.open(MatAlertComponent, {
       width: '300px',
-      height:'300px',
-      data: { message,processSuccess },
+      height: '300px',
+      data: { message, processSuccess },
     });
   }
 }

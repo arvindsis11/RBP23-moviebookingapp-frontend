@@ -24,4 +24,10 @@ export class StreamDataComponent {
       console.log(data);
     })
    }
+
+   deleteMessages(){
+    this.authapi.deleteKafkaData().subscribe(data=>{
+      console.log(data);
+    })
+   }
 }

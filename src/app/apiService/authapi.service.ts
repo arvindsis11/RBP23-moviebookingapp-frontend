@@ -11,6 +11,7 @@ import { ResponseData } from '../model/response-data';
 export class AuthapiService {
   //authorization-microservice url
   authserviceUrl = 'http://localhost:8080/api/v1.0/auth';
+  kafkaServiceUrl = 'http://localhost:8085/api/kafka';
   //aws url
   // authserviceUrl = 'http://54.200.203.109:8080/api/v1.0/auth';
   //aws api gateway url
@@ -48,7 +49,12 @@ export class AuthapiService {
 
   //experiment feature--comment me***
   fetchMessages() {
-    return this.http.get<any[]>('http://localhost:8085/api/kafka/messages');
+    return this.http.get<any[]>(this.kafkaServiceUrl+'/messages');
+  }
+
+  //delete all kafka msgs
+  deleteKafkaData(){
+    return this.http.delete<any>(this.kafkaServiceUrl+'/deleteAll');
   }
 
   isUerLoggedIn(){
